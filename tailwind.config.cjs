@@ -8,6 +8,9 @@ module.exports = {
     extend: {
       colors: {
         dark: "#242424"
+      },
+      spacing:{
+        
       }
     },
   },

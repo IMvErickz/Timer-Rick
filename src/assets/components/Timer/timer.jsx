@@ -36,12 +36,19 @@ export const Timer = () =>{
         <div className="w-screen h-screen  flex flex-col items-center justify-center">
             <h1 className="text-white w- text-6xl font-bold">Timer</h1>
             {/* padStart completa a string com '2' caracteres, caso não haja '2' complete com 0 */}
-            <div className="w-full flex flex-row items-center justify-center p-3">
-            <span className="time">{ minutos.toString().padStart(2, "0") } : </span>
-            <span className="time">{ segundos.toString().padStart(2, "0") }</span>
-            </div>
+          <div className="w-full flex flex-row items-center justify-center p-3 text-white">
+            <span className="text-3xl">{ minutos.toString().padStart(2, "0") }</span>
+            <span> : </span>
+            <span className="text-3xl">{ segundos.toString().padStart(2, "0") }</span>
+          </div>
             <br />
-            <button type="button" value="" onClick={()=> {setSegundosTotal(120) } }>Play</button>         
+          <div className="flex justify-center">
+            <button className="w-24 rounded-md bg-gradient-to-r from-green-400 to-blue-500" type="button" value="" onClick={()=> {setSegundosTotal(120) } }>Pause</button>
+
+            <button className="w-24 rounded-md bg-gradient-to-r from-green-400 to-blue-500" type="button" value="" onClick={()=> {setSegundosTotal(120) } }>Play</button>
+            
+            <button className="w-24 rounded-md bg-gradient-to-r from-green-400 to-blue-500" type="button" value="" onClick={()=> {setSegundosTotal(0) } }>Reset</button>
+          </div>        
         </div>
     )
 }//fim component
