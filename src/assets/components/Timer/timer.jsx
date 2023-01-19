@@ -1,34 +1,39 @@
 
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 
 const Timer = () =>{
 
-    // const [valor, setvalor] = useState
+    const [segundos, setSegundos] = useState(0);
+    const [minutos, setMinutos] = useState(0)
 
-    let segundos = 10
-    let minutos = 1
-    
-    function timer(){ 
-        const cronometro = setInterval( ()=>{
 
-        console.log(`Minutos: ${minutos} Segundos: ${segundos}`)
+    useEffect(()=>{
+      
+        const cronometro = setInterval(()=>{
+
+          if(segundos == 0){
+            console.log(`Menor que 0`)
+            clearInterval(cronometro)
+            // setInterval("")
+          }else{
+            setSegundos(segundos - 1)
+            console.log(segundos)
+          }
+
+        },1000)
+        return () => clearInterval(cronometro)
         
-        if(segundos <= 0 && minutos <= 0){
-          clearInterval(cronometro)
-        }else if(segundos > 0){
-          --segundos
-        }else if(segundos <= 0){
-          --minutos
-        }
-      },1000)
-    }//fim function
+    },[segundos])
     
+    // setSegundos(10)
 
     return(
         <div>
             <h1>Timer</h1>
-            <input type="button" value="Play" onClick={timer} />
+            {/* condition ? expr1 : expr2 */}
+            <p>{`${minutos} : ${segundos}`  > 0 ? segundos : 10}</p>
+            <button type="button" value="" onClick={()=> setSegundos(10)}>Play</button>         
         </div>
     )
 }//fim component
