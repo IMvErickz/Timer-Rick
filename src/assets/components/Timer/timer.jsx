@@ -4,36 +4,42 @@ import { useState } from "react";
 
 const Timer = () =>{
 
-    const [segundos, setSegundos] = useState(0);
-    const [minutos, setMinutos] = useState(0)
+    const [segundosTotal, setSegundosTotal] = useState(0);
+    // const [minutos, setMinutos] = useState(0)
+
+    const minutos = Math.floor(segundosTotal / 60)
+    const segundos = segundosTotal % 60
+
 
 
     useEffect(()=>{
       
         const cronometro = setInterval(()=>{
 
-          if(segundos == 0){
+          if(segundosTotal === 0){
             console.log(`Menor que 0`)
             clearInterval(cronometro)
             // setInterval("")
           }else{
-            setSegundos(segundos - 1)
+            setSegundosTotal(segundosTotal - 1)
             console.log(segundos)
           }
 
         },1000)
         return () => clearInterval(cronometro)
         
-    },[segundos])
+    },[segundosTotal])
     
-    // setSegundos(10)
+    // setSegundosTotal(10)
 
     return(
         <div>
             <h1>Timer</h1>
-            {/* condition ? expr1 : expr2 */}
-            <p>{`${minutos} : ${segundos}`  > 0 ? segundos : 10}</p>
-            <button type="button" value="" onClick={()=> setSegundos(10)}>Play</button>         
+            {/* padStart completa a string com '2' caracteres, caso não haja '2' complete com 0 */}
+            <span>{ minutos.toString().padStart(2, "0") } : </span>
+            <span>{ segundos.toString().padStart(2, "0") }</span>
+            <br />
+            <button type="button" value="" onClick={()=> {setSegundosTotal(120) } }>Play</button>         
         </div>
     )
 }//fim component
