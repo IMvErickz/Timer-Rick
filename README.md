@@ -20,6 +20,7 @@ Tecnologias utilizadas no Projeto :
 - NPM 
 ```
 npm install
+```
 
 ## 💻 Projeto
 
